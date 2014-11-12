@@ -21,6 +21,15 @@
 <![endif]-->
 </head>
 
+<?php
+//database connection
+	$host = "localhost";
+	$user = "honux";
+	$password = "popi1004";
+	$db = "honux77";
+	$conn = new mysqli($host, $user, $password, $db);
+?>
+
 <!-- start body page -->
 <body role="document">
 <!-- Fixed navbar -->
@@ -39,18 +48,18 @@
 	  <ul class="nav navbar-nav">
 		<li class="active"><a href="#">Home</a></li>
 	  </ul>
+	  <ul class="nav navbar-nav">
+		<li><a href="http://honux77.wordpress.com">Blog</a></li>
+	  </ul>
 	</div><!--/.nav-collapse -->
   </div>
 </nav>
 
-<?php
-	$host = "localhost";
-	$user = "honux";
-	$password = "popi1004";
-	$db = "honux77";
-
-	$conn = new mysqli($host, $user, $password, $db);
-
+<!-- jumpotron -->
+<div class="jumbotron">
+	<div class="container">
+	<h1>Hello, Honux </h1>
+<?
 	if ($conn->connect_error) {
 		die("Connection failed: ". $conn->connect_error);
 	}
@@ -60,15 +69,52 @@
 
 	if ($result->num_rows > 0) {
 		while ($row = $result->fetch_assoc()) {
-			echo "<h1>" .$row["msg"]. "</h1>\n";
+			echo "<p>" .$row["msg"]. "</p>\n";
+		}
+	} else {
+		echo "Honux Home: DBMS Error";
+	}
+?>
+	</div>
+</div>
+
+<!-- courses' info -->
+<div class="container">
+	<div class="row">
+<!-- course template form
+		<div class="col-md-4"> 
+			<h2>데이터베이스 베이직</h2>
+			<p>짱짱 재미있는 데이터베이스 베이직</p>
+			<a class="btn btn-default" href="#" role="button">
+			바로가기»</a>
+		</div>
+-->
+<?
+	$sql = "SELECT cname,course_desc,link FROM course";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		while ($row = $result->fetch_assoc()) {
+			echo '<div class="col-md-4">';
+			echo "<h2>" .$row["cname"]. "</h2>\n";
+			echo "<p>" .$row["course_desc"]. "</p>\n";
+			echo '<a class="btn btn-default" href="'.$row["link"];
+			echo '" role="button">';
+			echo "바로가기»</a>\n";
+			echo "</div>\n";
 		}
 	} else {
 		echo "Honux Home: DBMS Error";
 	}
 
+?>
+	</div>
+</div>
+
+
+<?
 	$conn->close();
 ?>
-
  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </body>
