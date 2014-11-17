@@ -52,6 +52,9 @@
 	  <ul class="nav navbar-nav">
 		<li><a href="http://honux77.wordpress.com">Blog</a></li>
 	  </ul>
+	  <ul class="nav navbar-nav">
+		<li><a href="lecture.php">Lecture</a></li>
+	  </ul>
 	</div><!--/.nav-collapse -->
   </div>
 </nav>
