@@ -32,6 +32,7 @@
 
 <!-- start body page -->
 <body role="document">
+
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -106,11 +107,9 @@
 	} else {
 		echo "Honux Home: DBMS Error";
 	}
-
 ?>
-	</div>
+	</div> 
 </div>
-
 
 <?
 	$conn->close();
