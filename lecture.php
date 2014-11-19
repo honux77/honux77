@@ -2,16 +2,15 @@
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="shortcut icon" href="assets/ico/favicon.ico">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="assets/ico/favicon.ico">
 
 <title>Honux Academy</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-
+<!-- dashboard css -->
+<link rel="stylesheet" href="assets/css/dashboard.css">
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -46,13 +45,9 @@
 	  <a class="navbar-brand" href="#">Honux.net</a>
 	</div>
 	<div id="navbar" class="navbar-collapse collapse">
-	  <ul class="nav navbar-nav">
+	  <ul class="nav navbar-nav navbar-right">
 		<li><a href="index.php">Home</a></li>
-	  </ul>
-	  <ul class="nav navbar-nav">
 		<li><a href="http://honux77.wordpress.com">Blog</a></li>
-	  </ul>
-	  <ul class="nav navbar-nav">
 		<li class="active"><a href="#">Lecture</a></li>
 	  </ul>
 	</div><!--/.nav-collapse -->

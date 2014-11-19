@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
@@ -44,9 +44,9 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="index.php">Home</a></li>
+          <li class="active"><a href="#">Home</a></li>
           <li><a href="http://honux77.wordpress.com">Blog</a></li>
-          <li class="active"><a href="#">Lecture</a></li>
+          <li><a href="lecture.php">Lecture</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
