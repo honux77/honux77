@@ -38,3 +38,23 @@ CREATE TABLE user(
 	role CHAR(3),
 	email CHAR(64) 
 );
+
+DROP TABLE IF EXISTS lecture;
+CREATE TABLE lecture(
+	lid int primary key auto_increment,
+	lname varchar(64),
+	html text,
+	cid int,
+	prev_lid int,
+	foreign key (cid) references course(cid),
+	foreign key (prev_lid) references lecture(lid)
+	);
+	
+DROP TABLE IF EXISTS unit;
+CREATE TABLE unit(
+	uid int primary key auto_increment,
+	uname varchar(64),
+	html text,	
+	lid int,
+	foreign key (lid) references lecture(lid)
+	);	
