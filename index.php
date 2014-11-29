@@ -57,7 +57,7 @@ if ($conn->connect_error) {
 	die("Connection failed: ". $conn->connect_error);
 }
 
-$sql = "SELECT msg FROM welcome";
+$sql = "SELECT msg FROM welcome where page='index'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -83,18 +83,17 @@ if ($result->num_rows > 0) {
 	</div>
 	-->
 <?
-$sql = "SELECT cname,course_desc,link FROM course";
+$sql = "SELECT title,detail,type, udate,link FROM main order by udate desc";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 	while ($row = $result->fetch_assoc()) {
-		echo '<div class="col-md-4">';
-		echo "<h2>" .$row["cname"]. "</h2>\n";
-		echo "<p>" .$row["course_desc"]. "</p>\n";
-		echo '<a class="btn btn-default" href="'.$row["link"];
+		echo "<h3>" .$row["udate"]." ".$row["title"] ."</h3>\n";
+		echo "<p>" .$row["detail"]. "</p>\n";
+		echo '<a class="btn btn-sm btn-info" href="'.$row["link"];
 		echo '" role="button">';
-		echo "바로가기»</a>\n";
-		echo "</div>\n";
+		echo $row['type']."</a>\n";
+		echo "<p><hr>\n";
 	}
 } else {
 	echo "Honux Home: DBMS Error";
