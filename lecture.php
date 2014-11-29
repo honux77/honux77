@@ -99,8 +99,8 @@ if ($result->num_rows > 0) {
 	echo "Honux Home: DBMS Error";
 }
 ?>
-</div> 
-	</div>
+	</div> 
+</div>
 
 <?
 $conn->close();
