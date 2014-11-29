@@ -41,7 +41,7 @@
 	  <ul class="nav navbar-nav navbar-right">
 		<li><a href="index.php">Home</a></li>
 		<li><a href="http://honux77.wordpress.com">Blog</a></li>
-		<li class="active"><a href="#">Lecture</a></li>
+		<li class="active"><a href="lecture.php">Lecture</a></li>
 	  </ul>
 	</div><!--/.nav-collapse -->
   </div>
@@ -51,10 +51,16 @@
 <?php
 	$fail = False;
 	$cid = $_GET['cid'];
-	if ($cid == null)
-		$fail = true;
-
-	$query = 'SELECT line,lname FROM lecture  WHERE cid='.$cid.' order by line';
+	$lid = $_GET['lid'];
+	$cname = "honux";
+	$lname = "code";
+	if ($cid == null) $cid = 1;
+	if ($lid == null) $lid = 1;
+	$sql = 'SELECT cname FROM course WHERE cid='.$cid;
+	$result= $conn->query($sql);
+	$row = $result->fetch_assoc();
+	$cname = $row['cname'];
+	$query = 'SELECT lid,line,lname FROM lecture  WHERE cid='.$cid.' order by line';
 	$result = $conn->query($query);
 ?>
 
@@ -65,7 +71,13 @@
 <?php
 	if($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
-			echo '<li><a href="#">'.$row["lname"].'</a></li>'; 
+			$link = "course.php?cid=".$cid."&&lid=".$row['lid'];
+			if($lid == $row["lid"]) {
+				$lname = $row['lname'];
+				echo '<li class="active"><a href="#">'.$row["lname"].'</a></li>'; 
+			}
+			else
+			echo '<li><a href="'.$link.'">'.$row["lname"].'</a></li>'; 
 		}
 	}
 ?>
@@ -73,38 +85,21 @@
         </div>
 
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<!-- title -->
 <?php
-		echo '<h1 class="page-header">cid: '.$_GET['cid'].'</h1>';
-		if ($cid == null) {
-		echo '<h1 class="page-header">cid is null</h1>';
-		}
+		echo '<h3 class="page-header">'.$cname.' - '.$lname.'</h3>';
 ?>
-	
 		
-          <h1 class="page-header">Dashboard</h1>
-
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
+<!-- body -->
+		<div id="lecture-body">
+	lecture body
+<?
+	$sql = "SELECT html FROM lecture WHERE lid=".$lid;
+	$row = $conn->query($sql)->fetch_assoc();
+	$html = $row['html'];
+	echo $html;
+?>
+		</div>
 	</div> 
 </div>
 

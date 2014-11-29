@@ -56,7 +56,6 @@
 if ($conn->connect_error) {
 	die("Connection failed: ". $conn->connect_error);
 }
-
 $sql = "SELECT msg FROM welcome where page='lecture'";
 $result = $conn->query($sql);
 
@@ -79,7 +78,7 @@ if ($result->num_rows > 0) {
 	<h2>데이터베이스 베이직</h2>
 	<p>짱짱 재미있는 데이터베이스 베이직</p>
 	<a class="btn btn-default" href="#" role="button">
-	바로가기»</a>
+	바로가기/a>
 	</div>
 	-->
 <?
@@ -93,7 +92,7 @@ if ($result->num_rows > 0) {
 		echo "<p>" .$row["course_desc"]. "</p>\n";
 		echo '<a class="btn btn-sm btn-warning" href=course.php?cid='.$row["cid"];
 		echo ' role="button">';
-		echo "바로가기»</a>\n";
+		echo "바로가기</a>\n";
 		echo "</div>\n";
 	}
 } else {

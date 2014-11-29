@@ -1,4 +1,3 @@
-
 <?php
 //database connection
 $host = "localhost";
